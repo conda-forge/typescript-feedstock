@@ -19,12 +19,15 @@ Try it out at the playground, and stay up to date via our blog and Twitter accou
 Current build status
 ====================
 
-All platforms: [![Circle CI](https://circleci.com/gh/conda-forge/typescript-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/typescript-feedstock)
+All platforms:
+[![noarch](https://img.shields.io/circleci/project/github/conda-forge/typescript-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/typescript-feedstock)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/typescript/badges/version.svg)](https://anaconda.org/conda-forge/typescript)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/typescript/badges/downloads.svg)](https://anaconda.org/conda-forge/typescript)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-typescript-green.svg)](https://anaconda.org/conda-forge/typescript) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/typescript.svg)](https://anaconda.org/conda-forge/typescript) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/typescript.svg)](https://anaconda.org/conda-forge/typescript) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/typescript.svg)](https://anaconda.org/conda-forge/typescript) |
 
 Installing typescript
 =====================
