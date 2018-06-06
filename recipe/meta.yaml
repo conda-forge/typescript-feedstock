@@ -13,7 +13,9 @@ source:
 build:
   number: 0
   noarch: generic
-  script: npm install -g .
+  script: |
+    tgz=$(npm pack)
+    npm install -g $tgz
 
 requirements:
   build:
