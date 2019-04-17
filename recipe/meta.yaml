@@ -1,6 +1,6 @@
 {% set name = "typescript" %}
-{% set version = "3.4.2" %}
-{% set sha256 = "cde885c5bfd1cb68a80a46ab36b25c40bb6a63dc737589a08b7a613ab87d05b8" %}
+{% set version = "3.4.3" %}
+{% set sha256 = "8966ca0b2b4ba0a3e205cd1c90047278fa0d91cf7686e865a8009771ab959b56" %}
 
 package:
   name: {{ name|lower }}
