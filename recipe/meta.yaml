@@ -20,7 +20,7 @@ build:
 requirements:
   build:
     - nodejs
-    - gulp
+    - gulp-cli
   
 test:
   commands:
