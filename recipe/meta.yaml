@@ -11,8 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  noarch: generic
+  number: 1
   script: |
     tgz=$(npm pack)
     npm install -g $tgz
