@@ -1,6 +1,6 @@
 {% set name = "typescript" %}
-{% set version = "3.6.4" %}
-{% set sha256 = "efbceae7110ec47b64925c5c23ebcda8aa7d0d8778d4004831b1e0ad4ad40a82" %}
+{% set version = "3.9.7" %}
+{% set sha256 = "a9f13ff672ead520322cf9662e28078790ca9eaa55ce82c8a92038a2d7a65fce" %}
 
 package:
   name: {{ name|lower }}
@@ -20,19 +20,19 @@ build:
 requirements:
   build:
     - nodejs
-  
+
 test:
   commands:
     - npm list -g typescript
   requires:
     - nodejs
-   
+
 about:
   home: https://github.com/Microsoft/TypeScript
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE.txt
-  summary: 'TypeScript is a superset of JavaScript that compiles to clean JavaScript output.'
+  summary: TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
   description: |
     TypeScript is a language for application-scale JavaScript. TypeScript adds 
     optional types, classes, and modules to JavaScript. TypeScript supports 
@@ -41,7 +41,7 @@ about:
     Try it out at the playground, and stay up to date via our blog and Twitter account.
   doc_url: https://www.typescriptlang.org/docs/
   dev_url: https://github.com/Microsoft/TypeScript
-  
+
 extra:
   recipe-maintainers:
     - cshaley
