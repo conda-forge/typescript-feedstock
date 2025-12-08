@@ -1,0 +1,47 @@
+schema_version: 1
+
+context:
+  version: 5.9.3
+
+package:
+  name: typescript
+  version: ${{ version }}
+
+source:
+  url: https://registry.npmjs.org/typescript/-/typescript-${{ version }}.tgz
+  sha256: 10e108c9cf7d5f2879053dff18515fb405abf2ccef63eaaf017d9c571687a1d3
+
+build:
+  number: 0
+  noarch: generic
+
+requirements:
+  build:
+    - nodejs
+  run:
+    - nodejs
+
+tests:
+  - script:
+      - tsc --help
+      - tsserver --help
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  summary: TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
+  description: |
+    TypeScript is a language for application-scale JavaScript. TypeScript adds
+    optional types, classes, and modules to JavaScript. TypeScript supports
+    tools for large-scale JavaScript applications for any browser, for any
+    host, on any OS. TypeScript compiles to readable, standards-based JavaScript.
+    Try it out at the playground, and stay up to date via our blog and Twitter account.
+  homepage: https://github.com/Microsoft/TypeScript
+  repository: https://github.com/Microsoft/TypeScript
+  documentation: https://www.typescriptlang.org/docs/
+
+extra:
+  recipe-maintainers:
+    - cshaley
+    - danielnachun
+    - sannykr
