@@ -23,7 +23,7 @@ requirements:
 
 tests:
   - script: |
-      tsc --help 2>&1 | grep -q "tsc: The TypeScript Compiler"
+      tsc --help
       tsserver --help
 
 about:

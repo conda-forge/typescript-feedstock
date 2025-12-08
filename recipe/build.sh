@@ -13,13 +13,13 @@ npm install -ddd \
 mkdir -p ${PREFIX}/bin
 tee ${PREFIX}/bin/tsc << EOF
 #!/bin/sh
-exec \${CONDA_PREFIX}/lib/node_modules/typescript/bin/tsc
+exec \${CONDA_PREFIX}/lib/node_modules/typescript/bin/tsc "\$@"
 EOF
 chmod +x ${PREFIX}/bin/tsc
 
 tee ${PREFIX}/bin/tsserver << EOF
 #!/bin/sh
-exec \${CONDA_PREFIX}/lib/node_modules/typescript/bin/tsserver
+exec \${CONDA_PREFIX}/lib/node_modules/typescript/bin/tsserver "\$@"
 EOF
 chmod +x ${PREFIX}/bin/tsserver
 
