@@ -22,9 +22,9 @@ requirements:
     - nodejs
 
 tests:
-  - script: |
-      tsc --help
-      tsserver --help
+  - script:
+      - tsc --help
+      - tsserver --help
 
 about:
   license: Apache-2.0
