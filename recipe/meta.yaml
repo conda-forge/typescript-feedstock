@@ -1,4 +1,4 @@
-{% set version = "5.7.3" %}
+{% set version = "5.9.3" %}
 
 package:
   name: typescript
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://registry.npmjs.org/typescript/-/typescript-{{ version }}.tgz
-  sha256: 80cfca1254bab8e81d639178e42d6406d856fba6e34cad60d1ab50ee6e5f7ebb
+  sha256: 10e108c9cf7d5f2879053dff18515fb405abf2ccef63eaaf017d9c571687a1d3
 
 build:
   number: 0
@@ -17,11 +17,11 @@ requirements:
     - nodejs
   run:
     - nodejs
-  
+
 test:
   commands:
     - tsc --help
-   
+
 about:
   home: https://github.com/Microsoft/TypeScript
   license: Apache-2.0
@@ -35,7 +35,7 @@ about:
     Try it out at the playground, and stay up to date via our blog and Twitter account.
   doc_url: https://www.typescriptlang.org/docs/
   dev_url: https://github.com/Microsoft/TypeScript
-  
+
 extra:
   recipe-maintainers:
     - cshaley
