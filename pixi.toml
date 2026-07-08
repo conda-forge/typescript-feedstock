@@ -5,7 +5,7 @@
 
 [workspace]
 name = "typescript-feedstock"
-version = "3.57.0"  # conda-smithy version used to generate this file
+version = "2026.6.14"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/typescript-feedstock"
 authors = ["@conda-forge/typescript"]
 channels = ["conda-forge"]
@@ -13,7 +13,7 @@ platforms = ["linux-64", "osx-64", "win-64"]
 requires-pixi = ">=0.59.0"
 
 [dependencies]
-conda-build = ">=24.1"
+conda-build = ">=26.3"
 conda-forge-ci-setup = "4.*"
 rattler-build = "*"
 
@@ -23,18 +23,18 @@ description = "List contents of all packages found in rattler-build build direct
 [tasks.build]
 cmd = "rattler-build build --recipe recipe"
 description = "Build typescript-feedstock directly (without setup scripts), no particular variant specified"
-[tasks."build-linux_64_nodejs22"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_nodejs22.yaml"
-description = "Build typescript-feedstock with variant linux_64_nodejs22 directly (without setup scripts)"
-[tasks."inspect-linux_64_nodejs22"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_nodejs22.yaml"
-description = "List contents of typescript-feedstock packages built for variant linux_64_nodejs22"
 [tasks."build-linux_64_nodejs24"]
 cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_nodejs24.yaml"
 description = "Build typescript-feedstock with variant linux_64_nodejs24 directly (without setup scripts)"
 [tasks."inspect-linux_64_nodejs24"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_nodejs24.yaml"
 description = "List contents of typescript-feedstock packages built for variant linux_64_nodejs24"
+[tasks."build-linux_64_nodejs26"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/linux_64_nodejs26.yaml"
+description = "Build typescript-feedstock with variant linux_64_nodejs26 directly (without setup scripts)"
+[tasks."inspect-linux_64_nodejs26"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/linux_64_nodejs26.yaml"
+description = "List contents of typescript-feedstock packages built for variant linux_64_nodejs26"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"
