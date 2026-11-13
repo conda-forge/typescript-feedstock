@@ -3,30 +3,37 @@
 set -o xtrace -o nounset -o pipefail -o errexit
 
 # Create package archive and install globally
+npm pkg delete optionalDependencies
 npm pack --ignore-scripts
 npm install -ddd \
-    --no-bin-links \
     --global \
     --build-from-source \
     ${SRC_DIR}/${PKG_NAME}-${PKG_VERSION}.tgz
 
-mkdir -p ${PREFIX}/bin
-tee ${PREFIX}/bin/tsc << EOF
-#!/bin/sh
-exec \${CONDA_PREFIX}/lib/node_modules/typescript/bin/tsc "\$@"
-EOF
-chmod +x ${PREFIX}/bin/tsc
+case "${GOARCH}" in
+    amd64) node_arch=x64 ;;
+    *) node_arch=${GOARCH} ;;
+esac
+platform_package_name=typescript-${GOOS}-${node_arch}
+platform_package_dir=${PREFIX}/lib/node_modules/@typescript/${platform_package_name}
 
-tee ${PREFIX}/bin/tsserver << EOF
-#!/bin/sh
-exec \${CONDA_PREFIX}/lib/node_modules/typescript/bin/tsserver "\$@"
-EOF
-chmod +x ${PREFIX}/bin/tsserver
+mkdir -p ${platform_package_dir}/lib
+pushd typescript-go
+go-licenses save ./cmd/tsgo --save_path ${SRC_DIR}/library_licenses
+go build -trimpath -ldflags="-s -w" -tags noembed -o ${platform_package_dir}/lib/tsc ./cmd/tsgo
+cp internal/bundled/libs/* ${platform_package_dir}/lib/
+cp LICENSE NOTICE.txt ${platform_package_dir}/
+popd
 
-tee ${PREFIX}/bin/tsc.cmd << EOF
-call %CONDA_PREFIX%\bin\node %CONDA_PREFIX%\lib\node_modules\typescript\bin\tsc %*
-EOF
-
-tee ${PREFIX}/bin/tsserver.cmd << EOF
-call %CONDA_PREFIX%\bin\node %CONDA_PREFIX%\lib\node_modules\typescript\bin\tsserver %*
+tee ${platform_package_dir}/package.json << EOF
+{
+    "name": "@typescript/${platform_package_name}",
+    "version": "${PKG_VERSION}",
+    "license": "Apache-2.0",
+    "os": ["${GOOS}"],
+    "cpu": ["${node_arch}"],
+    "exports": {
+        "./package.json": "./package.json"
+    }
+}
 EOF

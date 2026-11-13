@@ -1,34 +1,45 @@
 schema_version: 1
 
 context:
-  version: "6.0.2"
+  version: "7.0.2"
 
 package:
   name: typescript
   version: ${{ version }}
 
 source:
-  url: https://registry.npmjs.org/typescript/-/typescript-${{ version }}.tgz
-  sha256: 0ae5c188a2f5db22df72fe5e74dcbc122afb52031a86dbac33e78a86db39c65e
+  - url: https://registry.npmjs.org/typescript/-/typescript-${{ version }}.tgz
+    sha256: da2513f4b95176d6dde8b51aab7afe8a927656c9d277369793f77f7e59371c08
+  - url: https://github.com/microsoft/typescript-go/archive/refs/tags/typescript/v${{ version }}.tar.gz
+    sha256: 25cca8ec9d89e4ceec5181a677ded2c6d690fa18b81e1277846303973eb71fcf
+    target_directory: typescript-go
 
 build:
   number: 0
-  noarch: generic
 
 requirements:
   build:
-    - nodejs
+    - ${{ compiler('go-nocgo') }}
+    - go-licenses
+    - nodejs >=20.12
   run:
-    - nodejs
+    - nodejs >=20.12
 
 tests:
   - script:
       - tsc --help
-      - tsserver --help
+      - tsc --noEmit test.ts
+    files:
+      recipe:
+        - test.ts
 
 about:
   license: Apache-2.0
-  license_file: LICENSE.txt
+  license_file:
+    - LICENSE
+    - vendor/vscode-jsonrpc/License.txt
+    - typescript-go/NOTICE.txt
+    - library_licenses/
   summary: TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
   description: |
     TypeScript is a language for application-scale JavaScript. TypeScript adds
@@ -42,6 +53,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - claydugo
     - cshaley
     - danielnachun
     - sannykr
